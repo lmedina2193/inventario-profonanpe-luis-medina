@@ -34,4 +34,17 @@ public class Inventario {
         throw new IllegalArgumentException("No existe un equipo con ese codigo.");
     }
 
+    public void asignar(String codigo, String area, String responsable) {
+        Equipo equipo = buscar(codigo);
+        if ("Sin asignar".equalsIgnoreCase(Equipo.validarTexto(area))
+                || "Sin asignar".equalsIgnoreCase(Equipo.validarTexto(responsable))) {
+            throw new IllegalArgumentException("Ingrese un area y un responsable reales de la prueba.");
+        }
+        if (equipo.getEstado().equals("Baja") || equipo.getEstado().equals("Mantenimiento")) {
+            throw new IllegalArgumentException("No se puede asignar un equipo en baja o mantenimiento.");
+        }
+        equipo.asignar(area, responsable);
+        equipo.cambiarEstado("En uso");
+    }
+
 }
