@@ -10,7 +10,7 @@ public class Principal {
         Scanner teclado = new Scanner(System.in);
         int opcion = -1;
         while (opcion != 0) {
-            System.out.println("\n1 Registrar | 2 Listar | 3 Buscar | 0 Salir");
+            System.out.println("\n1 Registrar | 2 Listar | 3 Buscar | 4 Asignar | 0 Salir");
             try {
                 if (!teclado.hasNextLine()) { break; }
                 opcion = Integer.parseInt(teclado.nextLine().trim());
@@ -32,6 +32,13 @@ public class Principal {
                     case 3:
                         System.out.print("Codigo a buscar: ");
                         System.out.println(inventario.buscar(teclado.nextLine()));
+                        break;
+                    case 4:
+                        System.out.print("Codigo: "); String codigoAsignar = teclado.nextLine();
+                        System.out.print("Area: "); String area = teclado.nextLine();
+                        System.out.print("Responsable: "); String responsable = teclado.nextLine();
+                        inventario.asignar(codigoAsignar, area, responsable);
+                        System.out.println("Asignacion registrada. Estado: En uso.");
                         break;
                     case 0:
                         System.out.println("Programa terminado.");
