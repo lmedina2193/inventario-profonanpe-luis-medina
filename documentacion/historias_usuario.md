@@ -2,12 +2,6 @@
 
 Proyecto: Sistema de Inventario para Profonanpe  
 Autor: Luis Medina Quispe  
-Rol: Administrador del inventario y desarrollador
-
-# Historias de usuario
-
-Proyecto: Sistema de Inventario para Profonanpe  
-Autor: Luis Medina Quispe  
 Responsable de todas las historias: Luis Medina Quispe
 
 ## HU-01 - Registrar equipo
