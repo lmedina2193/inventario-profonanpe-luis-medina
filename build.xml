@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="InventarioProfonanpe" default="run" basedir=".">
+  <target name="compile">
+    <mkdir dir="build/classes"/>
+    <javac srcdir="src" destdir="build/classes" release="17" encoding="UTF-8" includeantruntime="false"/>
+  </target>
+  <target name="run" depends="compile">
+    <java classname="inventario.Principal" fork="true" failonerror="true"><classpath><pathelement location="build/classes"/></classpath></java>
+  </target>
+  <target name="test" depends="compile">
+    <javac srcdir="test" destdir="build/classes" release="17" encoding="UTF-8" includeantruntime="false"><classpath><pathelement location="build/classes"/></classpath></javac>
+    <java classname="inventario.PruebasInventario" fork="true" failonerror="true"><classpath><pathelement location="build/classes"/></classpath></java>
+  </target>
+</project>
