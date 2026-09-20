@@ -10,7 +10,7 @@ public class Principal {
         Scanner teclado = new Scanner(System.in);
         int opcion = -1;
         while (opcion != 0) {
-            System.out.println("\n1 Registrar | 2 Listar | 0 Salir");
+            System.out.println("\n1 Registrar | 2 Listar | 3 Buscar | 0 Salir");
             try {
                 if (!teclado.hasNextLine()) { break; }
                 opcion = Integer.parseInt(teclado.nextLine().trim());
@@ -28,6 +28,10 @@ public class Principal {
                         if (inventario.cantidad() == 0) { System.out.println("No hay equipos registrados."); }
                         for (Equipo equipo : inventario.listar()) { System.out.println(equipo); }
                         System.out.println("Total de equipos: " + inventario.cantidad());
+                        break;
+                    case 3:
+                        System.out.print("Codigo a buscar: ");
+                        System.out.println(inventario.buscar(teclado.nextLine()));
                         break;
                     case 0:
                         System.out.println("Programa terminado.");

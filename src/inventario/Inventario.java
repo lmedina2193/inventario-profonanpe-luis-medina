@@ -26,4 +26,12 @@ public class Inventario {
 
     public int cantidad() { return equipos.size(); }
 
+    public Equipo buscar(String codigo) {
+        codigo = Equipo.validarTexto(codigo);
+        for (Equipo equipo : equipos) {
+            if (equipo.getCodigo().equalsIgnoreCase(codigo)) { return equipo; }
+        }
+        throw new IllegalArgumentException("No existe un equipo con ese codigo.");
+    }
+
 }
