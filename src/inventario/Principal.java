@@ -10,7 +10,7 @@ public class Principal {
         Scanner teclado = new Scanner(System.in);
         int opcion = -1;
         while (opcion != 0) {
-            System.out.println("\n1 Registrar | 2 Listar | 3 Buscar | 4 Asignar | 0 Salir");
+            System.out.println("\n1 Registrar | 2 Listar | 3 Buscar | 4 Asignar | 5 Estado | 0 Salir");
             try {
                 if (!teclado.hasNextLine()) { break; }
                 opcion = Integer.parseInt(teclado.nextLine().trim());
@@ -39,6 +39,15 @@ public class Principal {
                         System.out.print("Responsable: "); String responsable = teclado.nextLine();
                         inventario.asignar(codigoAsignar, area, responsable);
                         System.out.println("Asignacion registrada. Estado: En uso.");
+                        break;
+                    case 5:
+                        System.out.print("Codigo: "); String codigoEstado = teclado.nextLine();
+                        System.out.println("1 Disponible | 2 En uso | 3 Mantenimiento | 4 Baja");
+                        int seleccion = Integer.parseInt(teclado.nextLine().trim());
+                        String[] estados = {"Disponible", "En uso", "Mantenimiento", "Baja"};
+                        if (seleccion < 1 || seleccion > 4) { throw new IllegalArgumentException("Estado no permitido."); }
+                        inventario.cambiarEstado(codigoEstado, estados[seleccion - 1]);
+                        System.out.println("Estado actualizado.");
                         break;
                     case 0:
                         System.out.println("Programa terminado.");
