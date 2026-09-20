@@ -47,4 +47,14 @@ public class Inventario {
         equipo.cambiarEstado("En uso");
     }
 
+    public void cambiarEstado(String codigo, String estado) {
+        Equipo equipo = buscar(codigo);
+        if ("En uso".equals(estado) && equipo.getResponsable().equals("Sin asignar")) {
+            throw new IllegalArgumentException("Primero asigne un responsable mediante la opcion 4.");
+        }
+        equipo.cambiarEstado(estado);
+        // Disponible significa que el equipo queda libre para otra asignacion.
+        if ("Disponible".equals(estado)) { equipo.asignar("Sin asignar", "Sin asignar"); }
+    }
+
 }
